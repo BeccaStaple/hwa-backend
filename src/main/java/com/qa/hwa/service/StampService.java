@@ -17,12 +17,12 @@ public class StampService {
 		this.repo = repo;
 	}
 	
-	public Stamp create() {
-		return null;
+	public Stamp create(Stamp stamp) {
+		return this.repo.save(stamp);
 	}
 	
 	public List<Stamp> read() {
-		return repo.readAll(); //create read method in repo
+		return repo.findAll(); 
 	}
 	
 	public Stamp update() {

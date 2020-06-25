@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 
 
 @Entity(name = "stamp")
@@ -14,15 +16,18 @@ public class Stamp {
 	@GeneratedValue
 	private long id;
 	
-	//need to work out how to add collection id
+	//need to work out how to add collection id and connect
 	
 	@Column(name = "name", length = 60)
+	@NotNull
 	private String name;
 	
 	@Column(name = "value")
+	@NotNull
 	private double value;
 	
 	@Column(name = "yearMade")
+	@NotNull
 	private long yearMade;
 	
 	

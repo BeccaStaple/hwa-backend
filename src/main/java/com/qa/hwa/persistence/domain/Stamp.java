@@ -16,8 +16,6 @@ public class Stamp {
 	@GeneratedValue
 	private long id;
 	
-	//need to work out how to add collection id and connect
-	
 	@Column(name = "name", length = 60)
 	@NotNull
 	private String name;
@@ -29,6 +27,8 @@ public class Stamp {
 	@Column(name = "yearMade")
 	@NotNull
 	private long yearMade;
+	
+	//TODO add collection id 
 	
 	
 	

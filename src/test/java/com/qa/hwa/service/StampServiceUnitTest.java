@@ -3,6 +3,8 @@ package com.qa.hwa.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -45,6 +47,21 @@ public class StampServiceUnitTest {
 	}
 	
 	@Test
+	public void read() {
+		List<Stamp> stampList = new ArrayList<Stamp>();
+		Stamp stampAdded = new Stamp("hello", 1.2, 1567);
+		
+		stampList.add(savedStamp);
+		stampList.add(stampAdded);
+		
+		Mockito.when(this.repo.findAll()).thenReturn(stampList);
+		
+		
+		assertEquals(stampList, this.service.read(savedStamp, stampAdded));
+		
+	}
+	
+	@Test
 	public void testUpdate() {
 		
 		Mockito.when(this.repo.findById(savedStamp.getId())).thenReturn(Optional.of(savedStamp));
@@ -60,6 +77,18 @@ public class StampServiceUnitTest {
 		
 		Mockito.verify(this.repo, Mockito.times(1)).findById(savedStamp.getId());
 		Mockito.verify(this.repo, Mockito.times(1)).save(stampPlusId);
+	}
+	
+	@Test
+	public void testDelete() {
+		final long ID = 1L;
+		final boolean RESULT = false;
+		
+		Mockito.when(this.repo.existsById(ID)).thenReturn(false);
+		
+		assertEquals(RESULT, this.service.delete(1L));
+		
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(ID);
 	}
 	
 	

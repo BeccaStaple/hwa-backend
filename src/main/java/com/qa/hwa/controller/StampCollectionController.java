@@ -2,6 +2,7 @@ package com.qa.hwa.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.qa.hwa.service.StampCollectionService;
 
 @RestController
 @RequestMapping("/collection")
+@CrossOrigin
 public class StampCollectionController {
 
 	private StampCollectionService service;
@@ -35,7 +37,7 @@ public class StampCollectionController {
 		return this.service.read();
 	}
 	
-	@PutMapping("update")
+	@PutMapping("/update")
 	public StampCollection update() {
 		return null;
 	}

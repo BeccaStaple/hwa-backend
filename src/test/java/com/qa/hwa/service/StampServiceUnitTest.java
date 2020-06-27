@@ -3,6 +3,8 @@ package com.qa.hwa.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Optional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,5 +43,25 @@ public class StampServiceUnitTest {
 		
 		Mockito.verify(this.repo, Mockito.times(1)).save(STAMP);
 	}
+	
+	@Test
+	public void testUpdate() {
+		
+		Mockito.when(this.repo.findById(savedStamp.getId())).thenReturn(Optional.of(savedStamp));
+	
+		Stamp newStamp = new Stamp("updated stamp", 1.99, 1900);
+		
+		Stamp stampPlusId = new Stamp("updated stamp", 1.99, 1900);
+		stampPlusId.setId(savedStamp.getId());
+		
+		Mockito.when(this.repo.save(stampPlusId)).thenReturn(stampPlusId);
+		
+		assertEquals(stampPlusId, this.service.update(newStamp, savedStamp.getId()));
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findById(savedStamp.getId());
+		Mockito.verify(this.repo, Mockito.times(1)).save(stampPlusId);
+	}
+	
+	
 	
 }

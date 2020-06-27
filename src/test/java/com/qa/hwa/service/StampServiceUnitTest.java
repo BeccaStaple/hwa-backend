@@ -57,7 +57,7 @@ public class StampServiceUnitTest {
 		Mockito.when(this.repo.findAll()).thenReturn(stampList);
 		
 		
-		assertEquals(stampList, this.service.read(savedStamp, stampAdded));
+		assertEquals(stampList, service.read(savedStamp, stampAdded));
 		
 	}
 	

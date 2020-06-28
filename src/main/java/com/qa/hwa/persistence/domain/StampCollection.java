@@ -1,9 +1,12 @@
 package com.qa.hwa.persistence.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.sun.istack.NotNull;
 
@@ -18,17 +21,20 @@ public class StampCollection {
 	
 	@Column
 	@NotNull
-	private double value;
+	private String theme;
 	
 	@Column
 	@NotNull
-	private String theme;
+	private double value;
+	
+	@OneToMany(mappedBy = "collectionId")
+	private List<Stamp> stamp;
 	
 	public StampCollection() {
 		
 	}
 	
-	public StampCollection(double value, String theme) {
+	public StampCollection(String theme, double value) {
 		super();
 		this.value = value;
 		this.theme= theme;

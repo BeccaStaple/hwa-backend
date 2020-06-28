@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.sun.istack.NotNull;
 
@@ -28,8 +29,8 @@ public class Stamp {
 	@NotNull
 	private long yearMade;
 	
-	//TODO add collection id 
-	
+	@ManyToOne(targetEntity = StampCollection.class)
+	private StampCollection collectionId;
 	
 	
 	public Stamp() {

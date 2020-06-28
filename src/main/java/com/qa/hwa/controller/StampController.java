@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qa.hwa.dto.StampDto;
 import com.qa.hwa.persistence.domain.Stamp;
 import com.qa.hwa.service.StampService;
 
@@ -27,8 +28,10 @@ public class StampController {
 		this.service = service;
 	}
 
+	
+	//TODO need to sort this out and add response entity
 	@PostMapping("/create")
-	public Stamp create(@RequestBody Stamp stamp) {
+	public StampDto create(@RequestBody Stamp stamp) {
 		return this.service.create(stamp);
 	}
 	

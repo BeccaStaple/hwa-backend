@@ -3,6 +3,7 @@ package com.qa.hwa.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.qa.hwa.exceptions.StampCollectionNotFoundException;
@@ -13,10 +14,12 @@ import com.qa.hwa.persistence.repo.StampCollectionRepo;
 public class StampCollectionService {
 
 	private StampCollectionRepo repo;
+	private ModelMapper mapper;
 
-	public StampCollectionService(StampCollectionRepo repo) {
+	public StampCollectionService(StampCollectionRepo repo, ModelMapper mapper) {
 		super();
 		this.repo = repo;
+		this.mapper = mapper;
 	}
 
 	public StampCollection create(StampCollection collection) {

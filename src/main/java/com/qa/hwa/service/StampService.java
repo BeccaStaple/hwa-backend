@@ -3,8 +3,10 @@ package com.qa.hwa.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.qa.hwa.dto.StampDto;
 import com.qa.hwa.exceptions.StampNotFoundException;
 import com.qa.hwa.persistence.domain.Stamp;
 import com.qa.hwa.persistence.repo.StampRepo;
@@ -12,15 +14,23 @@ import com.qa.hwa.persistence.repo.StampRepo;
 @Service
 public class StampService {
 
-	public StampRepo repo;
+	private StampRepo repo;
+	private ModelMapper mapper;
 	
-	public StampService(StampRepo repo) {
+	
+	public StampService(StampRepo repo, ModelMapper mapper) {
 		super();
 		this.repo = repo;
+		this.mapper = mapper;
 	}
 	
-	public Stamp create(Stamp stamp) {
-		return this.repo.save(stamp);
+	private StampDto mapToDto(Stamp stamp) {
+		return this.mapper.map(stamp, StampDto.class);
+	}
+	
+	public StampDto create(Stamp stamp) {
+		Stamp savedStamp = this.repo.save(stamp);
+		return this.mapToDto(savedStamp);
 	}
 	
 	public List<Stamp> read() {

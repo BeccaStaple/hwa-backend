@@ -1,5 +1,6 @@
 package com.qa.hwa.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +34,15 @@ public class StampService {
 		return this.mapToDto(savedStamp);
 	}
 	
-	public List<Stamp> read() {
-		return repo.findAll(); 
+	public List<StampDto> read() {
+		List<StampDto> dtos = new ArrayList<>();
+		for (Stamp  stamp : this.repo.findAll()) {
+			dtos.add(this.mapToDto(stamp));
+		}
+		return dtos; 
 	}
 	
-	public Stamp update(Stamp stamp, long id) {
+	public StampDto update(Stamp stamp, long id) {
 		Optional<Stamp> stampOpt = this.repo.findById(id);
 		
 		Stamp stampUpdate = stampOpt.orElseThrow(() -> new StampNotFoundException());
@@ -46,7 +51,8 @@ public class StampService {
 		stampUpdate.setValue(stamp.getValue());
 		stampUpdate.setYearMade(stamp.getYearMade());
 		
-		return this.repo.save(stampUpdate);
+		Stamp savedStamp = this.repo.save(stampUpdate);
+		return this.mapToDto(savedStamp);
 	}
 	
 	public boolean delete(Long id) {

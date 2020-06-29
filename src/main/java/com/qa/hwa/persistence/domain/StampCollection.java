@@ -36,8 +36,8 @@ public class StampCollection {
 	
 	public StampCollection(String theme, double value) {
 		super();
-		this.value = value;
 		this.theme= theme;
+		this.value = value;
 	}
 
 	public long getId() {

@@ -33,7 +33,7 @@ public class StampCollectionController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<StampCollectionDto> create(StampCollection collection) {
+	public ResponseEntity<StampCollectionDto> create(@RequestBody StampCollection collection) {
 		return new ResponseEntity<StampCollectionDto>(this.service.create(collection), HttpStatus.CREATED);
 	}
 	

@@ -13,9 +13,8 @@ public class StampCollectionDto {
 	
 	private List<StampDto> stampDto;
 
-	public StampCollectionDto(long id, String theme, double value, List<StampDto> stampDto) {
+	public StampCollectionDto(String theme, double value, List<StampDto> stampDto) {
 		super();
-		this.id = id;
 		this.value = value;
 		this.theme = theme;
 		this.stampDto = stampDto;

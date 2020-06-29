@@ -12,9 +12,8 @@ public class StampDto {
 	private long yearMade;
 
 	
-	public StampDto(long id, String name, double value, long yearMade) {
+	public StampDto(String name, double value, long yearMade) {
 		super();
-		this.id =id;
 		this.name = name;
 		this.value = value;
 		this.yearMade = yearMade;

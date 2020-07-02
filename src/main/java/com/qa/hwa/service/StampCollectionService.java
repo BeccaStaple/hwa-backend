@@ -40,6 +40,10 @@ public class StampCollectionService {
 		}
 		return dtos;
 	}
+	
+	public StampCollectionDto readOne(Long id) {
+		return this.mapToDto(this.repo.findById(id).orElseThrow(() -> new StampCollectionNotFoundException()));
+	}
 
 	public StampCollectionDto update(StampCollection collection, Long id) {
 		Optional<StampCollection> collectOpt = this.repo.findById(id);

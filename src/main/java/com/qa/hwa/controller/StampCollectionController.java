@@ -42,12 +42,17 @@ public class StampCollectionController {
 		return new ResponseEntity<List<StampCollectionDto>>(this.service.read(), HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
+	@GetMapping("/read/{id}")
+	public ResponseEntity<StampCollectionDto> readOneById(@PathVariable Long id) {
+		return ResponseEntity.ok(this.service.readOne(id));
+	}
+	
+	@PutMapping("/update/{id}")
 	public ResponseEntity<StampCollectionDto> update(@PathVariable Long id, @RequestBody StampCollection collection) {
 		return new ResponseEntity<StampCollectionDto>(this.service.update(collection, id), HttpStatus.ACCEPTED);	
 		}
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		if (this.service.delete(id)) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

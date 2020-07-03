@@ -41,6 +41,11 @@ public class StampController {
 		return new ResponseEntity<List<StampDto>>(this.service.read(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/read/{id}")
+	public ResponseEntity<StampDto> readOneById(@PathVariable Long id) {
+		return ResponseEntity.ok(this.service.readOne(id));
+	}
+	
 	@PutMapping("/update/{id}")
 	public ResponseEntity<StampDto> update(@PathVariable Long id, @RequestBody Stamp stamp) {
 		return new ResponseEntity<StampDto>(this.service.update(stamp, id), HttpStatus.ACCEPTED);

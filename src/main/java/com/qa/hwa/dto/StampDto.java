@@ -11,20 +11,18 @@ public class StampDto {
 
 	private long yearMade;
 	
-	private long collectionId;
-	
 	public StampDto() {
 		
 	}
 
 	
-	public StampDto(long id, String name, double value, long yearMade, long collectionId) {
+	public StampDto(long id, String name, double value, long yearMade) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.value = value;
 		this.yearMade = yearMade;
-		this.collectionId = collectionId;
+
 	}
 
 	public long getId() {
@@ -60,14 +58,7 @@ public class StampDto {
 	}
 
 
-	public long getCollectionId() {
-		return collectionId;
-	}
 
-
-	public void setCollectionId(long collectionId) {
-		this.collectionId = collectionId;
-	}
 
 
 

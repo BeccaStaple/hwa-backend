@@ -42,6 +42,10 @@ public class StampService {
 		return dtos; 
 	}
 	
+	public StampDto readOne(Long id) {
+		return this.mapToDto(this.repo.findById(id).orElseThrow(() -> new StampNotFoundException()));
+	}
+	
 	public StampDto update(Stamp stamp, long id) {
 		Optional<Stamp> stampOpt = this.repo.findById(id);
 		

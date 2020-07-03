@@ -27,7 +27,7 @@ public class StampCollection {
 	@NotNull
 	private double value;
 	
-	@OneToMany(mappedBy = "collectionId")
+	@OneToMany(mappedBy = "collection")
 	private List<Stamp> stamp;
 	
 	public StampCollection() {
@@ -62,6 +62,14 @@ public class StampCollection {
 
 	public void setTheme(String theme) {
 		this.theme = theme;
+	}
+
+	public List<Stamp> getStamp() {
+		return stamp;
+	}
+
+	public void setStamp(List<Stamp> stamp) {
+		this.stamp = stamp;
 	}
 	
 	

@@ -29,8 +29,10 @@ public class Stamp {
 	@NotNull
 	private long yearMade;
 	
+
+
 	@ManyToOne(targetEntity = StampCollection.class)
-	private StampCollection collectionId;
+	private StampCollection collection;
 	
 	
 	public Stamp() {
@@ -78,6 +80,12 @@ public class Stamp {
 		this.yearMade = yearMade;
 	}
 	
-	
+	public StampCollection getCollection() {
+		return collection;
+	}
+
+	public void setCollection(StampCollection collection) {
+		this.collection = collection;
+	}
 	
 }

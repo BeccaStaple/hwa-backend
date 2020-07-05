@@ -1,6 +1,6 @@
 package com.qa.hwa.dto;
 
-import java.util.List;
+
 
 
 public class StampCollectionDto {
@@ -11,18 +11,15 @@ public class StampCollectionDto {
 	
 	private double value;
 	
-	private List<StampDto> stampDto;
-	
 	public StampCollectionDto() {
 		
 	}
 
-	public StampCollectionDto(long id, String theme, double value, List<StampDto> stampDto) {
+	public StampCollectionDto(long id, String theme, double value) {
 		super();
 		this.id = id;
 		this.theme = theme;
 		this.value = value;
-		this.stampDto = stampDto;
 	}
 
 	public long getId() {
@@ -49,13 +46,7 @@ public class StampCollectionDto {
 		this.theme = theme;
 	}
 
-	public List<StampDto> getStamp() {
-		return stampDto;
-	}
 
-	public void setStamp(List<StampDto> stampDto) {
-		this.stampDto = stampDto;
-	}
 	
 	
 }

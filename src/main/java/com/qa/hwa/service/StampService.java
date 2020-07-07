@@ -25,7 +25,7 @@ public class StampService {
 		this.mapper = mapper;
 	}
 	
-	private StampDto mapToDto(Stamp stamp) {
+	public StampDto mapToDto(Stamp stamp) {
 		return this.mapper.map(stamp, StampDto.class);
 	}
 	

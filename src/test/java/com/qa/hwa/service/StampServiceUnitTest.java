@@ -14,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.modelmapper.ModelMapper;
 
 import com.qa.hwa.dto.StampDto;
 import com.qa.hwa.persistence.domain.Stamp;
@@ -26,8 +27,13 @@ public class StampServiceUnitTest {
 	
 	private Stamp savedStamp;
 	
+	private StampDto stampDto;
+	
 	@Mock
 	private StampRepo repo;
+	
+	@Mock
+	private ModelMapper mapper;
 	
 	@InjectMocks
 	private StampService service;
@@ -36,16 +42,18 @@ public class StampServiceUnitTest {
 	public void init() {
 		this.savedStamp = new Stamp(STAMP.getName(), STAMP.getValue(), STAMP.getYearMade());
 		this.savedStamp.setId(1L);
+		this.stampDto = new ModelMapper().map(savedStamp,  StampDto.class);
 	}
 	
 	@Test
 	public void testCreate() {
 		
 		Mockito.when(this.repo.save(STAMP)).thenReturn(savedStamp);
+		Mockito.when(this.mapper.map(savedStamp, StampDto.class)).thenReturn(stampDto);
 		
-		StampDto stampToDto = service.mapToDto(savedStamp);
+		StampDto createdStampDto = this.stampDto;
 		
-		assertEquals(stampToDto, service.create(STAMP));
+		assertEquals(createdStampDto, service.create(STAMP));
 		
 		Mockito.verify(this.repo, Mockito.times(1)).save(STAMP);
 	}
@@ -53,17 +61,17 @@ public class StampServiceUnitTest {
 	@Test
 	public void testRead() {
 		List<Stamp> stampList = new ArrayList<Stamp>();
-		Stamp stampAdded = new Stamp("hello", 1.2, 1567);
 		
 		stampList.add(savedStamp);
-		stampList.add(stampAdded);
 		
 		Mockito.when(this.repo.findAll()).thenReturn(stampList);
 		
-		
+			
 		assertEquals(stampList, service.read());
 		
 	}
+	
+	//need test for readOne()
 	
 	@Test
 	public void testUpdate() {
@@ -74,6 +82,8 @@ public class StampServiceUnitTest {
 		
 		Stamp stampPlusId = new Stamp("updated stamp", 1.99, 1900);
 		stampPlusId.setId(savedStamp.getId());
+		
+		StampDto stampToDtoID = service.mapToDto(stampPlusId);
 		
 		Mockito.when(this.repo.save(stampPlusId)).thenReturn(stampPlusId);
 		

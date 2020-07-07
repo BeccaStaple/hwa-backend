@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.qa.hwa.dto.StampDto;
 import com.qa.hwa.persistence.domain.Stamp;
 import com.qa.hwa.persistence.repo.StampRepo;
 
@@ -39,15 +40,18 @@ public class StampServiceUnitTest {
 	
 	@Test
 	public void testCreate() {
+		
 		Mockito.when(this.repo.save(STAMP)).thenReturn(savedStamp);
 		
-		assertEquals(savedStamp, service.create(STAMP));
+		StampDto stampToDto = service.mapToDto(savedStamp);
+		
+		assertEquals(stampToDto, service.create(STAMP));
 		
 		Mockito.verify(this.repo, Mockito.times(1)).save(STAMP);
 	}
 	
 	@Test
-	public void read() {
+	public void testRead() {
 		List<Stamp> stampList = new ArrayList<Stamp>();
 		Stamp stampAdded = new Stamp("hello", 1.2, 1567);
 		

@@ -1,6 +1,7 @@
 package com.qa.hwa.service;
 
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -65,9 +66,11 @@ public class StampServiceUnitTest {
 		stampList.add(savedStamp);
 		
 		Mockito.when(this.repo.findAll()).thenReturn(stampList);
+		Mockito.when(this.mapper.map(savedStamp, StampDto.class)).thenReturn(stampDto);
 		
-			
-		assertEquals(stampList, service.read());
+		assertFalse(service.read().isEmpty());
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 		
 	}
 	

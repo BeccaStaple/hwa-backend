@@ -1,6 +1,10 @@
 package com.qa.hwa.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,5 +51,44 @@ public class StampControllerUnitTest {
 		Mockito.verify(this.service, Mockito.times(1)).create(savedStamp);
 	}
 	
+	@Test
+	public void testRead() {
+		List<StampDto> stampList = new ArrayList<StampDto>();
+		stampList.add(stampDto);
+		
+		Mockito.when(this.service.read()).thenReturn(stampList);
+		assertFalse(service.read().isEmpty());
+		
+		Mockito.verify(this.service, Mockito.times(1)).read();
+	}
 	
+	@Test
+	public void testReadOne() {
+		Mockito.when(this.service.readOne(ID)).thenReturn(stampDto);
+		
+		assertEquals(stampDto, this.service.readOne(ID)); //not sure if this is correct
+		Mockito.verify(this.service, Mockito.times(1)).readOne(ID);
+	}
+	
+
+	@Test
+	public void testUpdate() {
+		Stamp newStamp = new Stamp("updated stamp controller", 13.99, 2000);
+		
+		Stamp stampPlusId = new Stamp(newStamp.getName(), newStamp.getValue(), newStamp.getYearMade());
+		stampPlusId.setId(savedStamp.getId());
+		
+		StampDto stampDtoUpdated = this.service.mapToDto(stampPlusId);
+		
+		Mockito.when(this.service.update(stampPlusId, savedStamp.getId())).thenReturn(stampDtoUpdated);
+		
+		assertEquals(stampDtoUpdated, this.service.update(newStamp, savedStamp.getId()));
+	}
+	
+	@Test
+	public void testDelete() {
+		final boolean RESULT = false;
+		assertEquals(RESULT, this.service.delete(ID));
+		Mockito.verify(this.service, Mockito.times(1)).delete(ID);
+	}
 }

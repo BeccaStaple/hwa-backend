@@ -75,16 +75,17 @@ public class StampServiceUnitTest {
 
 	}
 
-	//TODO
+	@Test
+	public void testReadOne() {
+		Mockito.when(this.repo.findById(ID)).thenReturn(Optional.of(savedStamp));
+		
+		Mockito.when(this.service.mapToDto(savedStamp)).thenReturn(stampDto);
+		
+		assertEquals(stampDto, service.readOne(ID));
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findById(ID);
+	}
 
-//	@Test
-//	public void testReadOne() {
-//		Mockito.when(this.repo.findById(this.ID))
-//		
-//	}
-
-	
-	//TODO
 	@Test
 	public void testUpdate() {
 

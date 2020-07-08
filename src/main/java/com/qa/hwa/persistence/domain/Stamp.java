@@ -87,5 +87,49 @@ public class Stamp {
 	public void setCollection(StampCollection collection) {
 		this.collection = collection;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((collection == null) ? 0 : collection.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(value);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + (int) (yearMade ^ (yearMade >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stamp other = (Stamp) obj;
+		if (collection == null) {
+			if (other.collection != null)
+				return false;
+		} else if (!collection.equals(other.collection))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (Double.doubleToLongBits(value) != Double.doubleToLongBits(other.value))
+			return false;
+		if (yearMade != other.yearMade)
+			return false;
+		return true;
+	}
+	
+	
 	
 }

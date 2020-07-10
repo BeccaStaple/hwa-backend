@@ -1,5 +1,6 @@
 package com.qa.hwa.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -38,6 +39,8 @@ public class StampControllerIntegrationTest {
 	private Stamp savedStamp;
 
 	private StampDto stampDto;
+	
+	private final long ID = 1L;
 
 	private List<StampDto> listStampDto;
 
@@ -51,7 +54,7 @@ public class StampControllerIntegrationTest {
 	public void init() {
 		this.stamp = new Stamp("integ test stamp", 23.45, 2011);
 		this.savedStamp = new Stamp(stamp.getName(), stamp.getValue(), stamp.getYearMade());
-		this.savedStamp.setId(1L);
+		this.savedStamp.setId(this.ID);
 		this.stampDto = this.modelMapper.map(savedStamp, StampDto.class);
 		this.listStampDto = new ArrayList<StampDto>();
 	}
@@ -70,6 +73,23 @@ public class StampControllerIntegrationTest {
 		this.mockMvc
 				.perform(get("/stamp/read").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andExpect(content().json(this.mapper.writeValueAsString(listStampDto)));
+	}
+	
+	@Test
+	public void testReadOne() throws JsonProcessingException, Exception {
+		this.mockMvc.perform(get("/stamp/read/" + this.ID).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk()).andExpect(content().json(this.mapper.writeValueAsString(stampDto)));
+	}
+	
+//	@Test
+//	public void testUpdate() {
+//		
+//	}
+	
+	@Test
+	public void testDelete() throws Exception {
+		this.mockMvc.perform(delete("/stamp/delete/" + this.ID).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+		.andExpect(status().isNoContent());
 	}
 
 }

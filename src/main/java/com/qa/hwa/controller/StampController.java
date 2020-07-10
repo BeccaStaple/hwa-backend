@@ -43,7 +43,7 @@ public class StampController {
 	
 	@GetMapping("/read/{id}")
 	public ResponseEntity<StampDto> readOneById(@PathVariable Long id) {
-		return ResponseEntity.ok(this.service.readOne(id));
+		return new ResponseEntity<StampDto>(this.service.readOne(id), HttpStatus.OK);
 	}
 	
 	@PutMapping("/update/{id}")

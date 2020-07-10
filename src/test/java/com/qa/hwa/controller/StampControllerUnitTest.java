@@ -66,7 +66,7 @@ public class StampControllerUnitTest {
 	public void testReadOne() {
 		Mockito.when(this.service.readOne(ID)).thenReturn(stampDto);
 		
-		assertEquals(stampDto, this.service.readOne(ID)); //not sure if this is correct
+		assertEquals(stampDto, this.service.readOne(ID)); 
 		Mockito.verify(this.service, Mockito.times(1)).readOne(ID);
 	}
 	
@@ -80,9 +80,8 @@ public class StampControllerUnitTest {
 		
 		StampDto stampDtoUpdated = this.service.mapToDto(stampPlusId);
 		
-		Mockito.when(this.service.update(stampPlusId, savedStamp.getId())).thenReturn(stampDtoUpdated);
-		
 		assertEquals(stampDtoUpdated, this.service.update(newStamp, savedStamp.getId()));
+		Mockito.verify(this.service, Mockito.times(1)).update(newStamp, savedStamp.getId());
 	}
 	
 	@Test

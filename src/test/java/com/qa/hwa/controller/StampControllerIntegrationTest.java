@@ -40,8 +40,8 @@ public class StampControllerIntegrationTest {
 
 	private StampDto stampDto;
 	
-	private final long ID = 1L;
-
+	private long id;
+	
 	private List<StampDto> listStampDto;
 
 	@Autowired
@@ -52,9 +52,10 @@ public class StampControllerIntegrationTest {
 
 	@Before
 	public void init() {
+		this.id = 1L;
 		this.stamp = new Stamp("integ test stamp", 23.45, 2011);
 		this.savedStamp = new Stamp(stamp.getName(), stamp.getValue(), stamp.getYearMade());
-		this.savedStamp.setId(this.ID);
+		this.savedStamp.setId(id);
 		this.stampDto = this.modelMapper.map(savedStamp, StampDto.class);
 		this.listStampDto = new ArrayList<StampDto>();
 	}
@@ -77,8 +78,13 @@ public class StampControllerIntegrationTest {
 	
 	@Test
 	public void testReadOne() throws JsonProcessingException, Exception {
-		this.mockMvc.perform(get("/stamp/read/" + this.ID).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-		.andExpect(status().isOk()).andExpect(content().json(this.mapper.writeValueAsString(stampDto)));
+		this.mockMvc
+		.perform(get("/stamp/read/" + this.id)
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
+		.andExpect(content()
+				.json(this.mapper.writeValueAsString(stampDto)));
 	}
 	
 //	@Test
@@ -88,7 +94,7 @@ public class StampControllerIntegrationTest {
 	
 	@Test
 	public void testDelete() throws Exception {
-		this.mockMvc.perform(delete("/stamp/delete/" + this.ID).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+		this.mockMvc.perform(delete("/stamp/delete/" + this.id).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 		.andExpect(status().isNoContent());
 	}
 

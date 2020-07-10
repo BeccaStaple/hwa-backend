@@ -3,6 +3,7 @@ package com.qa.hwa.controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -87,10 +88,13 @@ public class StampControllerIntegrationTest {
 				.json(this.mapper.writeValueAsString(stampDto)));
 	}
 	
-//	@Test
-//	public void testUpdate() {
-//		
-//	}
+	@Test // need to do more work on this 
+	public void testUpdate() throws JsonProcessingException, Exception {
+		this.mockMvc
+		.perform(put("/stamp/update/" + this.id).contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON)).andExpect(status().isAccepted()).andExpect(content().json(this.mapper.writeValueAsString(stampDto)));
+	//needs to return an updated stampDto
+	}
 	
 	@Test
 	public void testDelete() throws Exception {

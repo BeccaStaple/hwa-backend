@@ -1,8 +1,5 @@
 package com.qa.hwa.dto;
 
-
-
-
 public class StampCollectionDto {
 
 	private long id;

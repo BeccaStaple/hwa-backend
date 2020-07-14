@@ -53,7 +53,7 @@
 <p>This will tell you if the server is up a running, you should be able to view the Swagger Resource Listing</p>
 
 <h2>Front-end</h2>
-<p>Head over to here to view the front-end code</p>
+<p>Head over to here to view the front-end code: https://github.com/BeccaStaple/hwa-frontend</p>
 
 <h2>Built With</h2>
 <p>Maven</p>

@@ -66,5 +66,5 @@
 <p>Piers Barber</p>
 
 
-
-[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/DAVFoundation/captain-n3m0/blob/master/LICENSE)
+<h2>License</h2>
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/BeccaStaple/hwa-backend/blob/master/LICENSE.md)

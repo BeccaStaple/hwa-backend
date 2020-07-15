@@ -1,7 +1,7 @@
 <h1>Hobby Project</h1>
 <hr>
 <p>This is a project that was set to me by QA Consulting to access my understanding fo rht technologies they have been teaching me</p>
-<p>With this application you can create your own stamp and a collection of stamps, the stams can be read back to you and you can update and delete you collections/stamps</p>
+<p>With this application you can create your own stamp and a collection of stamps, the stams can be read back to you and you can update and delete your collections/stamps</p>
 
 <p>Bringing stamp collecting into the 21st Centruy!</p>
 
@@ -51,6 +51,16 @@
 <h2>Testing the server</h2>
 <p>Once started try navigating to: http://localhost:8082/swagger-ui.html</p>
 <p>This will tell you if the server is up a running, you should be able to view the Swagger Resource Listing</p>
+
+<h2>Testing</h2>
+
+<h3>Integration Testing</h3>
+<p>Integration tests are set up for this project and the relevant dependecies for JUnit are in the pom.xml</p>
+<p>These tests are set up to check that the CRUD functionality works</p>
+
+<h3>Unit Testing</h3>
+
+<h3>Selenium Testing</h3>
 
 <h2>Front-end</h2>
 <p>Head over to here to view the front-end code: https://github.com/BeccaStaple/hwa-frontend</p>

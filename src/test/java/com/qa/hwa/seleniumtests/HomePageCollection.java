@@ -53,7 +53,7 @@ public class HomePageCollection extends WebPage {
 
 	@FindBy(xpath = "/html/body/div[3]/div[4]/div/div[2]/div[2]/button[1]")
 	private WebElement updateModalBtn;
-	
+
 	@FindBy(xpath = "/html/body/div[3]/div[3]/div/table/tbody/td[2]")
 	private WebElement seeUpdateCollection;
 
@@ -62,13 +62,13 @@ public class HomePageCollection extends WebPage {
 	}
 
 	public String successReturn() {
-		new FluentWait<WebDriver>(getDriver()).withTimeout(Duration.ofSeconds(5)).pollingEvery(Duration.ofMillis(500))
-				.ignoring(Exception.class).until(ExpectedConditions.visibilityOf(closeSuccess));
+
+		new WebDriverWait(getDriver(), 3).until(ExpectedConditions.visibilityOf(closeSuccess));
 
 		return success.getText().toLowerCase();
 		closeSuccess.click();
 	}
-	
+
 	public String readContents() {
 		return seeUpdateCollection.getText();
 	}

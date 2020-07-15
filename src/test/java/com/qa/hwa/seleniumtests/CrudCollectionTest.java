@@ -20,7 +20,7 @@ public class CrudCollectionTest {
 	@Before
 	public void init() {
 		ChromeOptions opts = new ChromeOptions();
-		opts.setHeadless(true);
+		//opts.setHeadless(true);
 		this.driver = new ChromeDriver(opts);
 		this.driver.manage().window().maximize();
 	}

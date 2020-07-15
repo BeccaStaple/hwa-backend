@@ -1,9 +1,9 @@
 <h1>Hobby Project</h1>
 <hr>
-<p>This is a project that was set to me by QA Consulting to access my understanding fo rht technologies they have been teaching me</p>
-<p>With this application you can create your own stamp and a collection of stamps, the stams can be read back to you and you can update and delete your collections/stamps</p>
+<p>This is a project that was set to me by QA Consulting to access my understanding for the technologies they have been teaching me</p>
+<p>With this application you can create your own stamp and a collection of stamps, the stamps can be read back to you and you can update and delete your stamp collection</p>
 
-<p>Bringing stamp collecting into the 21st Centruy!</p>
+<p>Bringing stamp collecting into the 21st Century!</p>
 
 <h2>Introduction</h2>
 <hr>
@@ -14,8 +14,8 @@
 <li>Spring Tool Suite</li>
 <li>Maven</li>
 <li>Visual Studio Code (for the frontend)</li>
-<li>CromeDriver (for testing the frontend)</li>
-<li>MySQL (Optional - I have opted for the H2 Database - mroe info below)</li>
+<li>ChromeDriver (for testing the frontend with Selenium)</li>
+<li>MySQL (Optional - I have opted for the H2 Database - more info below)</li>
 </ul>
 
 <h3>Installing</h3>
@@ -55,7 +55,7 @@
 <h2>Testing</h2>
 
 <h3>Integration Testing</h3>
-<p>Integration tests are set up for this project and the relevant dependecies for JUnit are in the pom.xml</p>
+<p>Integration tests are set up for this project and the relevant dependencies for JUnit are in the pom.xml</p>
 <p>These tests are set up to check that the CRUD functionality works</p>
 
 <h3>Unit Testing</h3>

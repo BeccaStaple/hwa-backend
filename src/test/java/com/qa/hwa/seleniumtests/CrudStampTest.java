@@ -1,6 +1,5 @@
 package com.qa.hwa.seleniumtests;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -39,12 +38,19 @@ public class CrudStampTest {
 	}
 
 	@Test
-	public void readTest() {
+	public void readTest() throws InterruptedException {
+		final String stampName = "testing selenium";
+		final String stampValue = "29.99";
+		final String yearMade = "2020";
+		final String collectionid = "1";
+		
 		HomePageStamp home = new HomePageStamp(driver);
-
+		home.createStamp(stampName, stampValue, yearMade, collectionid);
+		home.closeSuccess();
+				
 		home.readStamps();
 
-		assertFalse(home.readContents().contains(""));
+		assertFalse(home.readContents().contains("5"));
 
 	}
 
@@ -59,20 +65,20 @@ public class CrudStampTest {
 
 		home.updateStamp(stampId, nameUpdate, valueUpdate, yearUpdate, colUpdate);
 
-		String result = home.readContents();
+		String result = home.successReturn();
 
-		assertEquals(nameUpdate, result);
+		assertTrue(result.contains("success"));
 	}
 
 	@Test
 	public void testDelete() {
 		final String stampId = "1";
 		HomePageStamp home = new HomePageStamp(driver);
-		
+
 		home.deleteStamp(stampId);
-		
+
 		String result = home.successReturn();
-		
+
 		assertTrue(result.contains("success"));
 	}
 

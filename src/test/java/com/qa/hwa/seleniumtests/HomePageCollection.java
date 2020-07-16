@@ -58,7 +58,7 @@ public class HomePageCollection extends WebPage {
 	private WebElement seeUpdateCollection;
 
 	public HomePageCollection(RemoteWebDriver driver) {
-		super(driver, "file:///C:/Users/rebec/Desktop/eclipse-work-bench/000-Project/index.html");
+		super(driver, "https://beccastaple.github.io/hwa-frontend/");
 	}
 
 	public String successReturn() {
@@ -66,7 +66,7 @@ public class HomePageCollection extends WebPage {
 		new WebDriverWait(getDriver(), 3).until(ExpectedConditions.visibilityOf(closeSuccess));
 
 		return success.getText().toLowerCase();
-		closeSuccess.click();
+		
 	}
 
 	public String readContents() {
@@ -79,8 +79,9 @@ public class HomePageCollection extends WebPage {
 		submitCollectionBtn.click();
 	}
 
-	public void readCollections() {
+	public void readCollections() throws InterruptedException {
 		readCollections.click();
+		Thread.sleep(2000l);
 	}
 
 	public String readReturn() {

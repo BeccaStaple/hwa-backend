@@ -109,7 +109,7 @@ public class StampCollectionIntegrationControllerTest {
 
 		StampCollection updateCollection = new StampCollection(testCollection.getTheme(), testCollection.getValue());
 		updateCollection.setId(this.id);
-
+		
 		StampCollectionDto colToDto = this.service.mapToDto(updateCollection);
 
 		this.mockMvc

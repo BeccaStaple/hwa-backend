@@ -1,6 +1,5 @@
 package com.qa.hwa.seleniumtests;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -15,7 +14,6 @@ public class CrudCollectionTest {
 
 	private RemoteWebDriver driver;
 
-	// TODO add reports
 
 	@Before
 	public void init() {
@@ -42,11 +40,19 @@ public class CrudCollectionTest {
 
 	@Test
 	public void testReadCollections() {
+		final String collectionName = "sellenium";
+		final String collectionValue = "23.99";
 		HomePageCollection home = new HomePageCollection(driver);
+		
+		home.createCollection(collectionName, collectionValue);
+		
+		home.closeSuccess();
 
 		home.readCollections();
+		
+		home.readReturn();
 
-		assertFalse(home.readReturn().contains(""));
+		assertFalse(home.readReturn().contains("5"));
 	}
 	
 	@Test
@@ -56,11 +62,9 @@ public class CrudCollectionTest {
 		String valueAmount = "23.24";
 		home.updateCollection(themeName, valueAmount);
 		
-		home.readCollections();
-		
-		String result = home.readContents();
-		
-		assertEquals(themeName, result);
+		String result = home.successReturn();
+
+		assertTrue(result.contains("success"));
 	}
 	
 	@Test

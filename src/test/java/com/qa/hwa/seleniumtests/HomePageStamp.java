@@ -65,17 +65,23 @@ public class HomePageStamp extends WebPage{
 	
 	@FindBy(xpath = "/html/body/div[2]/div/div[2]/button")
 	private WebElement closeSuccessBtn;
+	
 
 	public HomePageStamp(RemoteWebDriver driver) {
-		super(driver, "file:///C:/Users/rebec/Desktop/eclipse-work-bench/000-Project/index.html");
+		super(driver, "https://beccastaple.github.io/hwa-frontend/");
 	}
 	
 	
 	public String successReturn() {
 
-		new WebDriverWait(getDriver(), 3).until(ExpectedConditions.visibilityOf(closeSuccessBtn));
+		new WebDriverWait(getDriver(), 5);
 
 		return success.getText().toLowerCase();
+		
+	}
+	
+	public void closeSuccess() {
+		new WebDriverWait(getDriver(), 3).until(ExpectedConditions.elementToBeClickable(closeSuccessBtn));
 		closeSuccessBtn.click();
 	}
 	
@@ -89,11 +95,12 @@ public class HomePageStamp extends WebPage{
 		submitCreateBtn.click();
 	}
 	
-	public void readStamps() {
+	public void readStamps() throws InterruptedException {
 		readAllBtn.click();
 	}
 	
 	public String readContents() {
+		new WebDriverWait(getDriver(), 5).until(ExpectedConditions.visibilityOf(readOutput));
 		return readOutput.getText();
 	}
 	
@@ -106,7 +113,7 @@ public class HomePageStamp extends WebPage{
 		updateIDInput.sendKeys(stampId);
 		updateStampBtn.click();
 		
-		new WebDriverWait(getDriver(), 3).until(ExpectedConditions.visibilityOf(closeSuccessBtn));
+		new WebDriverWait(getDriver(), 5);
 
 		updateNameInput.sendKeys(nameUpdate);
 		updateValueInput.sendKeys(valueUpdate);

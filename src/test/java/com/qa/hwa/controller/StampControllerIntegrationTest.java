@@ -108,7 +108,7 @@ public class StampControllerIntegrationTest {
 		StampDto stampToDto = this.service.mapToDto(updateStamp);
 
 		this.mockMvc
-				.perform(put("/stamp/update/" + this.id).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+				.perform(put("/stamp/update/" + this.id).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(updateStamp)))
 				.andExpect(status().isAccepted()).andExpect(content().json(this.mapper.writeValueAsString(stampToDto)));
 	}
 

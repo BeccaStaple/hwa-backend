@@ -113,7 +113,7 @@ public class StampCollectionIntegrationControllerTest {
 		StampCollectionDto colToDto = this.service.mapToDto(updateCollection);
 
 		this.mockMvc
-				.perform(put("/collection/update/" + this.id).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+				.perform(put("/collection/update/" + this.id).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(updateCollection)))
 				.andExpect(status().isAccepted()).andExpect(content().json(this.mapper.writeValueAsString(colToDto)));
 	}
 	

@@ -26,6 +26,7 @@
 <li>Download for your relevant operating system (i.e Windows)</li>
 <li>Go to your downloads folder and double click on the downloaded file</li>
 <li>You will then be guided through the set-up process</li>
+<li>To run the project you just need to go to Boot (a green hexagon) and press the run button</li>
 </ol>
 
 <h3>How to set up Maven</h3>
@@ -40,7 +41,7 @@
 <li>Click on "Environment Variables..."</li>
 <li>Go to system variables and click "new"</li>
 <li>Your variable name can be M2_HOME (for Maven)</li>
-<li>Your variable value is along the lines of C:\Program Files\Java\jdk1.8.0_251</li>
+<li>Your variable value is along the lines of C:\Program Files\apache-maven-3.6.3</li>
 <li>Press "OKAY"</li>
 <li>Your path is now saved</li>
 </ol>
@@ -59,8 +60,11 @@
 <p>These tests are set up to check that the CRUD functionality works</p>
 
 <h3>Unit Testing</h3>
+<p>Using Mockito to unit test the individual methods</p>
 
 <h3>Selenium Testing</h3>
+<p>Selenium tests are set up to test the frontend - make sure you have downloaded the correct remote webdriver. I have 
+Google Chrome version 83 so I used ChromeDriver version 83. </p>
 
 <h2>Front-end</h2>
 <p>Head over to here to view the front-end code: https://github.com/BeccaStaple/hwa-frontend</p>
